@@ -1,0 +1,50 @@
+name: Deploy game to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Prepare static game
+        run: |
+          mkdir -p github-pages-dist/game
+          cp github-pages/index.html github-pages-dist/index.html
+          cp github-pages/game.js github-pages-dist/game.js
+          cp public/game/* github-pages-dist/game/
+          cat app/globals.css app/fairytale.css > github-pages-dist/styles.css
+          cat >> github-pages-dist/styles.css <<'CSS'
+          .answers button:disabled{cursor:not-allowed;opacity:.48;filter:grayscale(.35);transform:none;box-shadow:0 4px 0 #aebbb8}
+          .answers button:disabled:hover{background:linear-gradient(#fff,#f8f5e8);transform:none;box-shadow:0 4px 0 #aebbb8}
+          .count-first{margin-top:14px;color:#665589;font-weight:900;background:#eee7ff;border:1.5px solid #c4afe8;border-radius:13px;display:inline-block;padding:8px 13px}
+          .brand-mark{font-size:27px}.award{font-size:48px;color:#8b541b}
+          CSS
+          touch github-pages-dist/.nojekyll
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: github-pages-dist
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
