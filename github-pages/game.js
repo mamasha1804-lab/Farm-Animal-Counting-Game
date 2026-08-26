@@ -1,13 +1,13 @@
 const rounds=[
-{name:"cows",answer:6,image:"game/cows-v2.webp",points:[[22,32],[50,32],[78,32],[20,72],[50,72],[80,72]]},
-{name:"horses",answer:9,image:"game/horses-v2.webp",points:[[17,27],[42,27],[67,27],[85,34],[14,65],[34,68],[55,68],[75,68],[91,68]]},
-{name:"pigs",answer:10,image:"game/pigs-v2.webp",points:[[12,28],[31,25],[50,24],[69,25],[87,29],[12,70],[31,70],[50,70],[69,70],[87,70]]},
-{name:"sheep",answer:8,image:"game/sheep-v2.webp",points:[[14,29],[39,26],[64,26],[87,31],[14,69],[39,70],[64,70],[87,69]]},
-{name:"ducks",answer:7,image:"game/ducks-v2.webp",points:[[16,31],[42,26],[68,28],[87,41],[22,70],[51,69],[78,70]]},
-{name:"roosters",answer:3,image:"game/roosters-v2.webp",points:[[25,55],[50,52],[75,55]]},
-{name:"cats",answer:5,image:"game/cats-v2.webp",points:[[16,48],[34,55],[51,49],[68,55],[85,48]]},
-{name:"dogs",answer:4,image:"game/dogs-v2.webp",points:[[18,53],[40,53],[62,53],[84,53]]},
-{name:"frogs",answer:2,image:"game/frogs-v2.webp",points:[[33,58],[67,58]]}
+{name:"cows",answer:6,image:"game/cows-v2.webp",points:[[27,35],[51,35],[75,35],[27,70],[51,70],[75,70]]},
+{name:"horses",answer:9,image:"game/horses-v2.webp",points:[[27,28],[51,28],[75,28],[27,53],[51,53],[75,53],[27,78],[51,78],[75,78]]},
+{name:"pigs",answer:10,image:"game/pigs-v2.webp",points:[[15,32],[35,32],[53,32],[70,32],[88,32],[15,70],[35,70],[53,70],[70,70],[88,70]]},
+{name:"sheep",answer:8,image:"game/sheep-v2.webp",points:[[18,31],[42,31],[65,31],[87,31],[18,69],[42,69],[65,69],[87,69]]},
+{name:"ducks",answer:7,image:"game/ducks-v2.webp",points:[[29,35],[52,35],[75,35],[15,69],[39,69],[63,69],[87,69]]},
+{name:"roosters",answer:3,image:"game/roosters-v2.webp",points:[[25,56],[51,56],[76,56]]},
+{name:"cats",answer:5,image:"game/cats-v2.webp",points:[[39,36],[61,36],[28,69],[51,69],[73,69]]},
+{name:"dogs",answer:4,image:"game/dogs-v2.webp",points:[[20,52],[42,52],[65,52],[86,52]]},
+{name:"frogs",answer:2,image:"game/frogs-v2.webp",points:[[35,58],[68,58]]}
 ];
 let screen="start",index=0,score=0,picked=null,wrong=[],counted=0,sound=true,ctx=null;
 const root=document.getElementById("game");
