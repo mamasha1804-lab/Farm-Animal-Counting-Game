@@ -1,13 +1,13 @@
 const rounds=[
-{name:"cows",answer:6,image:"game/cows-v2.png",points:[[22,32],[50,32],[78,32],[20,72],[50,72],[80,72]]},
-{name:"horses",answer:9,image:"game/horses-v2.png",points:[[17,27],[42,27],[67,27],[85,34],[14,65],[34,68],[55,68],[75,68],[91,68]]},
-{name:"pigs",answer:10,image:"game/pigs-v2.png",points:[[12,28],[31,25],[50,24],[69,25],[87,29],[12,70],[31,70],[50,70],[69,70],[87,70]]},
-{name:"sheep",answer:8,image:"game/sheep-v2.png",points:[[14,29],[39,26],[64,26],[87,31],[14,69],[39,70],[64,70],[87,69]]},
-{name:"ducks",answer:7,image:"game/ducks-v2.png",points:[[16,31],[42,26],[68,28],[87,41],[22,70],[51,69],[78,70]]},
-{name:"roosters",answer:3,image:"game/roosters-v2.png",points:[[25,55],[50,52],[75,55]]},
-{name:"cats",answer:5,image:"game/cats-v2.png",points:[[16,48],[34,55],[51,49],[68,55],[85,48]]},
-{name:"dogs",answer:4,image:"game/dogs-v2.png",points:[[18,53],[40,53],[62,53],[84,53]]},
-{name:"frogs",answer:2,image:"game/frogs-v2.png",points:[[33,58],[67,58]]}
+{name:"cows",answer:6,image:"game/cows-v2.webp",points:[[22,32],[50,32],[78,32],[20,72],[50,72],[80,72]]},
+{name:"horses",answer:9,image:"game/horses-v2.webp",points:[[17,27],[42,27],[67,27],[85,34],[14,65],[34,68],[55,68],[75,68],[91,68]]},
+{name:"pigs",answer:10,image:"game/pigs-v2.webp",points:[[12,28],[31,25],[50,24],[69,25],[87,29],[12,70],[31,70],[50,70],[69,70],[87,70]]},
+{name:"sheep",answer:8,image:"game/sheep-v2.webp",points:[[14,29],[39,26],[64,26],[87,31],[14,69],[39,70],[64,70],[87,69]]},
+{name:"ducks",answer:7,image:"game/ducks-v2.webp",points:[[16,31],[42,26],[68,28],[87,41],[22,70],[51,69],[78,70]]},
+{name:"roosters",answer:3,image:"game/roosters-v2.webp",points:[[25,55],[50,52],[75,55]]},
+{name:"cats",answer:5,image:"game/cats-v2.webp",points:[[16,48],[34,55],[51,49],[68,55],[85,48]]},
+{name:"dogs",answer:4,image:"game/dogs-v2.webp",points:[[18,53],[40,53],[62,53],[84,53]]},
+{name:"frogs",answer:2,image:"game/frogs-v2.webp",points:[[33,58],[67,58]]}
 ];
 let screen="start",index=0,score=0,picked=null,wrong=[],counted=0,sound=true,ctx=null;
 const root=document.getElementById("game");
@@ -17,7 +17,7 @@ function say(text){if(!sound)return;speechSynthesis.cancel();const u=new SpeechS
 function choices(r){const s=new Set([r.answer]);let o=1;while(s.size<3){const lo=Math.max(1,r.answer-o),hi=Math.min(10,r.answer+o);if(lo!==r.answer)s.add(lo);if(s.size<3&&hi!==r.answer)s.add(hi);o++}return [...s].sort((a,b)=>a-b)}
 function shell(content){return '<div class="cloud cloud-a"></div><div class="cloud cloud-b"></div><div class="twinkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i><i>✦</i><i>✧</i></div><header class="topbar"><div class="brand" aria-label="Учимся с Ларисой Коротаевой"><span class="brand-mark">✦</span><span class="brand-copy"><small>Учимся с</small><strong>Ларисой Коротаевой</strong></span></div><button class="sound" id="sound" aria-label="Sound">'+icon("sound")+'</button></header>'+content+'<div class="grass"></div>'}
 function render(){
- if(screen==="start") root.innerHTML=shell('<section class="start-card"><div class="sticker">✦ COUNT 1–10</div><h1>Magical Farm<br><span>Counting Adventure</span></h1><div class="cover-wrap"><img src="game/cows-v2.png" alt="Animated farm animals in a sunny meadow"><div class="cover-badge">★ A counting adventure</div></div><button class="primary" id="start">✦ START <span>→</span></button><small>9 fun rounds · English listening practice</small></section>');
+ if(screen==="start") root.innerHTML=shell('<section class="start-card"><div class="sticker">✦ COUNT 1–10</div><h1>Magical Farm<br><span>Counting Adventure</span></h1><div class="cover-wrap"><img src="game/cows-v2.webp" alt="Animated farm animals in a sunny meadow"><div class="cover-badge">★ A counting adventure</div></div><button class="primary" id="start">✦ START <span>→</span></button><small>9 fun rounds · English listening practice</small></section>');
  if(screen==="play"){
   const r=rounds[index],locked=counted<r.answer;
   const spots=r.points.map((p,i)=>'<button data-animal="'+i+'" class="'+(i<counted?"counted ":"")+(i===counted?"next":"")+'" style="left:'+p[0]+'%;top:'+p[1]+'%" aria-label="'+(i+1)+'"><span>'+(i+1)+'</span></button>').join("");
